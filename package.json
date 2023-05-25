@@ -11,7 +11,7 @@
     "build:dev": "tsc --watch",
     "test:dev": "jest --watch",
     "test": "jest",
-    "test:coverage": "jest --coverage --passWithNoTests",
+    "test:coverage": "jest --coverage",
     "prepare": "husky install"
   },
   "keywords": [],
