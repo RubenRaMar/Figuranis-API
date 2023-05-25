@@ -1,8 +1,7 @@
 import { type NextFunction, type Request, type Response } from "express";
-import CustomError from "../../../Classes/CustomError/CustomError.js";
 import { endpointNotFound, generalError } from "./errorMiddleware.js";
-
-type CustomResponse = Pick<Response, "status" | "json">;
+import CustomError from "../../Classes/CustomError/CustomError.js";
+import { type CustomResponse } from "../../../types.js";
 
 const req = {};
 const next = jest.fn();
@@ -22,13 +21,13 @@ describe("Given a generalError middleware", () => {
       next as NextFunction
     );
 
-    test("Then it should return a 401 status code", () => {
+    test("Then it should response's a 401 status code", () => {
       const expectedStatusCode = 401;
 
       expect(res.status).toHaveBeenCalledWith(expectedStatusCode);
     });
 
-    test("Then it should return a 'Wrong credentials' meddage", () => {
+    test("Then it should call the response's method json with'Wrong credentials'", () => {
       const expectedMessage = "Wrong credentials";
 
       expect(res.json).toHaveBeenCalledWith({ message: expectedMessage });
@@ -45,7 +44,7 @@ describe("Given a generalError middleware", () => {
       next as NextFunction
     );
 
-    test("Then it should return a statusCode 500", () => {
+    test("Then it should  response's a statusCode 500", () => {
       const expectStatusCode = 500;
 
       expect(res.status).toHaveBeenCalledWith(expectStatusCode);
