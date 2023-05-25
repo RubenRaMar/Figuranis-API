@@ -5,7 +5,8 @@ import {
   endpointNotFound,
   generalError,
 } from "./middlewares/errors/errorMiddleware.js";
-import pingController from "./controllers/pingController.js";
+import pingController from "./controllers/ping/pingController.js";
+import loginUser from "./controllers/user/userController.js";
 
 const app = express();
 
@@ -21,7 +22,9 @@ app.disable("x-powered-by");
 
 app.use(morgan("dev"));
 
-app.use(pingController);
+app.get("/", pingController);
+
+app.use("/user/login", loginUser);
 
 app.use(endpointNotFound);
 
