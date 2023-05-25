@@ -2,7 +2,7 @@ import { type Request, type Response } from "express";
 import { type NextFunction } from "express-serve-static-core";
 import createDebug from "debug";
 import type CustomError from "../../../Classes/CustomError/CustomError.js";
-import chalk from "chalk/index.js";
+import chalk from "chalk";
 
 const debug = createDebug(
   "figuranisdb-api:server:middlewares:errors:errorMiddleware"
