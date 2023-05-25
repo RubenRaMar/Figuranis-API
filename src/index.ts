@@ -9,5 +9,3 @@ const debug = createDebug("figuranisdb-api:root");
 app.listen(port, () => {
   debug(chalk.green(`Listening on http://localhost:${port}`));
 });
-
-app.use();
