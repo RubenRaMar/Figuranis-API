@@ -3,7 +3,7 @@ import { type NextFunction } from "express-serve-static-core";
 import createDebug from "debug";
 
 import chalk from "chalk";
-import CustomError from "../../Classes/CustomError/CustomError";
+import CustomError from "../../Classes/CustomError/CustomError.js";
 
 const debug = createDebug(
   "figuranisdb-api:server:middlewares:errors:errorMiddleware"
