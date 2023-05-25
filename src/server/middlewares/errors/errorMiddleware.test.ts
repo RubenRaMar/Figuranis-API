@@ -1,6 +1,6 @@
 import { type NextFunction, type Request, type Response } from "express";
 import CustomError from "../../../Classes/CustomError/CustomError.js";
-import { generalError } from "./errorMiddleware.js";
+import { endpointNotFound, generalError } from "./errorMiddleware.js";
 
 type CustomResponse = Pick<Response, "status" | "json">;
 
@@ -22,7 +22,7 @@ describe("Given a generalError middleware", () => {
       next as NextFunction
     );
 
-    test("Then it should return a statusCode 401", () => {
+    test("Then it should return a 401 status code", () => {
       const expectedStatusCode = 401;
 
       expect(res.status).toHaveBeenCalledWith(expectedStatusCode);
@@ -55,6 +55,18 @@ describe("Given a generalError middleware", () => {
       const expectMessage = "Internal Server Error";
 
       expect(res.json).toHaveBeenCalledWith({ message: expectMessage });
+    });
+  });
+});
+
+describe("Given a endpointNotFound middleware", () => {
+  describe("When it invoked", () => {
+    test("Then it should call a next function with a error 'Endpoint not found'", () => {
+      const error = new CustomError(404, "Endpoint not found");
+
+      endpointNotFound(req as Request, res as Response, next as NextFunction);
+
+      expect(next).toHaveBeenCalledWith(error);
     });
   });
 });
