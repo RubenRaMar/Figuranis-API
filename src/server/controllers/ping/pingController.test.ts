@@ -1,6 +1,6 @@
 import { type Request, type Response } from "express";
 import pingController from "./pingController";
-import { type CustomResponse } from "../../types";
+import { type CustomResponse } from "../../../types";
 
 describe("Given a pingController controller", () => {
   describe("When receives a reponse", () => {
