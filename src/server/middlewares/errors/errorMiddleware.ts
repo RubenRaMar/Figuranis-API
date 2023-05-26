@@ -4,6 +4,11 @@ import createDebug from "debug";
 
 import chalk from "chalk";
 import CustomError from "../../Classes/CustomError/CustomError.js";
+import {
+  privateMessageList,
+  publicMessageList,
+  statusCodeList,
+} from "../../utils/responseData/responseData.js";
 
 const debug = createDebug(
   "figuranisdb-api:server:middlewares:errors:errorMiddleware"
@@ -14,10 +19,11 @@ export const endpointNotFound = (
   _res: Response,
   next: NextFunction
 ) => {
-  const statusCode = 404;
-  const message = "Endpoint not found";
+  const statusCode = statusCodeList.endpointNotFound;
+  const privatMessage = privateMessageList.endpointNotFound;
+  const publicMessage = publicMessageList.endpointNotFound;
 
-  const error = new CustomError(statusCode, message);
+  const error = new CustomError(statusCode, privatMessage, publicMessage);
 
   next(error);
 };
@@ -28,8 +34,10 @@ export const generalError = (
   res: Response,
   _next: NextFunction
 ) => {
-  const statusCode = error.statusCode || 500;
-  const message = error.statusCode ? error.message : "Internal Server Error";
+  const statusCode = error.statusCode || statusCodeList.generalError;
+  const message = error.statusCode
+    ? error.message
+    : privateMessageList.generalError;
 
   debug(chalk.bgRed(statusCode), chalk.red(message));
 
