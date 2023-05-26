@@ -3,6 +3,7 @@ export interface StatusCodeList {
   wrongCredentials: number;
   endpointNotFound: number;
   generalError: number;
+  badRequest: number;
 }
 
 export interface MessageList {
@@ -10,6 +11,7 @@ export interface MessageList {
   wrongCredentials: string;
   endpointNotFound: string;
   generalError: string;
+  badRequest: string;
 }
 
 interface OkStructure {

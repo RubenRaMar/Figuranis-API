@@ -7,7 +7,7 @@ import {
 } from "./middlewares/errors/errorMiddleware.js";
 import pingController from "./controllers/ping/pingController.js";
 import pathList from "./utils/path/path.js";
-import userRouter from "./router/userRouter.js";
+import userRouter from "./router/user/userRouter.js";
 
 const app = express();
 
