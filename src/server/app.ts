@@ -6,8 +6,8 @@ import {
   generalError,
 } from "./middlewares/errors/errorMiddleware.js";
 import pingController from "./controllers/ping/pingController.js";
-import loginUser from "./controllers/user/userController.js";
 import pathList from "./utils/path/path.js";
+import userRouter from "./router/userRouter.js";
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use(morgan("dev"));
 
 app.get(pathList.ping, pingController);
 
-app.use(`${pathList.user}${pathList.login}`, loginUser);
+app.use(pathList.user, userRouter);
 
 app.use(endpointNotFound);
 
