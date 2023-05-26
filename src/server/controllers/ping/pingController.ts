@@ -1,5 +1,5 @@
 import { type Request, type Response } from "express";
-import { privateMessageList } from "../../utils/responseData/responseData";
+import { privateMessageList } from "../../utils/responseData/responseData.js";
 
 const pingController = (_req: Request, res: Response) => {
   res.status(200).json({ message: privateMessageList.ok.pong });

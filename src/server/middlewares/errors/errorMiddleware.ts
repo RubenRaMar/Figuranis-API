@@ -1,7 +1,7 @@
-import { type Request, type Response } from "express";
 import { type NextFunction } from "express-serve-static-core";
+import { type Request, type Response } from "express";
+import { ValidationError } from "express-validation";
 import createDebug from "debug";
-
 import chalk from "chalk";
 import CustomError from "../../Classes/CustomError/CustomError.js";
 import {
@@ -34,6 +34,15 @@ export const generalError = (
   res: Response,
   _next: NextFunction
 ) => {
+  if (error instanceof ValidationError && error.details.body) {
+    const validationError = error.details.body
+      .map((joiError) => joiError.message.replaceAll('"', ""))
+      .join(" & ");
+
+    (error as CustomError).publicMessage = validationError;
+    debug(chalk.red(validationError));
+  }
+
   const statusCode = error.statusCode || statusCodeList.generalError;
   const message = error.statusCode
     ? error.message
