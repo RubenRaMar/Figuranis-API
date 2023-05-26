@@ -7,6 +7,7 @@ import {
 } from "./middlewares/errors/errorMiddleware.js";
 import pingController from "./controllers/ping/pingController.js";
 import loginUser from "./controllers/user/userController.js";
+import pathList from "./utils/path/path.js";
 
 const app = express();
 
@@ -22,9 +23,9 @@ app.disable("x-powered-by");
 
 app.use(morgan("dev"));
 
-app.get("/", pingController);
+app.get(pathList.ping, pingController);
 
-app.use("/user/login", loginUser);
+app.use(`${pathList.user}${pathList.login}`, loginUser);
 
 app.use(endpointNotFound);
 
