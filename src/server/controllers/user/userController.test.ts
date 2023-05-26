@@ -6,6 +6,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import loginUser from "./userController";
 import CustomError from "../../Classes/CustomError/CustomError";
+import { statusCodeList } from "../../utils/responseData/responseData";
 
 describe("Given a loginUser middleware controller", () => {
   const userCredentialsMock = {
@@ -42,7 +43,7 @@ describe("Given a loginUser middleware controller", () => {
     jwt.sign = jest.fn().mockReturnValue(token);
 
     test("Then it should call the response's method status with a 200", async () => {
-      const expectedStatusCode = 200;
+      const expectedStatusCode = statusCodeList.ok;
 
       await loginUser(
         req as UserCredentialsRequest,

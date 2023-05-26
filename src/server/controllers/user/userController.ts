@@ -4,6 +4,11 @@ import bcrypt from "bcryptjs";
 import CustomError from "../../Classes/CustomError/CustomError.js";
 import { type UserCredentialsRequest } from "./types.js";
 import User from "../../../database/models/User.js";
+import {
+  privateMessageList,
+  publicMessageList,
+  statusCodeList,
+} from "../../utils/responseData/responseData.js";
 
 const loginUser = async (
   req: UserCredentialsRequest,
@@ -16,7 +21,11 @@ const loginUser = async (
     const user = await User.findOne({ username }).exec();
 
     if (!user || !(await bcrypt.compare(password, user.password))) {
-      const customError = new CustomError(401, "Wrong credentials");
+      const customError = new CustomError(
+        statusCodeList.wrongCredentials,
+        privateMessageList.wrongCredentials,
+        publicMessageList.wrongCredentials
+      );
 
       throw customError;
     }
@@ -30,7 +39,7 @@ const loginUser = async (
       expiresIn: "10d",
     });
 
-    res.status(200).json({ token });
+    res.status(statusCodeList.ok).json({ token });
   } catch (error: unknown) {
     next(error);
   }
