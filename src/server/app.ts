@@ -8,6 +8,8 @@ import {
 import pingController from "./controllers/ping/pingController.js";
 import pathList from "./utils/path/path.js";
 import userRouter from "./router/user/userRouter.js";
+import figureRouter from "./router/figure/figureRouter.js";
+import auth from "./middlewares/errors/auth/authMiddleware.js";
 
 const app = express();
 
@@ -23,9 +25,11 @@ app.disable("x-powered-by");
 
 app.use(morgan("dev"));
 
-app.get(pathList.ping, pingController);
+app.get(pathList.slash, pingController);
 
 app.use(pathList.user, userRouter);
+
+app.use(pathList.slash, auth, figureRouter);
 
 app.use(endpointNotFound);
 
