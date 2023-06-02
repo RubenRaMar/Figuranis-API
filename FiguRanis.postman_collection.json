@@ -1,0 +1,49 @@
+{
+  "info": {
+    "_postman_id": "a55ee413-8550-4d9c-a071-8042d837ae0c",
+    "name": "FiguRanis",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27033858"
+  },
+  "item": [
+    {
+      "name": "GET \"/\"",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4005/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4005",
+          "path": [""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST \"/user/login\"",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4005/user/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4005",
+          "path": ["user", "login"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

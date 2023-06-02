@@ -1,5 +1,6 @@
 export interface PathStructure {
-  ping: string;
+  slash: string;
   login: string;
   user: string;
+  figures: string;
 }

@@ -19,7 +19,7 @@ describe("Given a pingController controller", () => {
       const expectedMessage = privateMessageList.ok.pong;
 
       const response: CustomResponse = await request(app)
-        .get(pathList.ping)
+        .get(pathList.slash)
         .expect(expectedStatusCode);
 
       expect(response.body).toStrictEqual({ message: expectedMessage });

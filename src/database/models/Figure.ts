@@ -1,7 +1,6 @@
 import { Schema, Types, model } from "mongoose";
-import { type FigureData } from "../../types.js";
 
-const figureSchema = new Schema<FigureData>({
+const figureSchema = new Schema({
   title: {
     type: String,
     unique: true,
@@ -38,8 +37,14 @@ const figureSchema = new Schema<FigureData>({
     type: Number,
     required: true,
   },
-  user: Types.ObjectId,
-  purchased: Boolean,
+  user: {
+    type: Types.ObjectId,
+    ref: "User",
+  },
+  purchased: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 const Figure = model("Figure", figureSchema, "figuranis");
