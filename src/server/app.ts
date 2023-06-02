@@ -25,11 +25,11 @@ app.disable("x-powered-by");
 
 app.use(morgan("dev"));
 
-app.get(pathList.slash, pingController);
+app.get(pathList.root, pingController);
 
 app.use(pathList.user, userRouter);
 
-app.use(pathList.slash, auth, figureRouter);
+app.use(pathList.figures, auth, figureRouter);
 
 app.use(endpointNotFound);
 

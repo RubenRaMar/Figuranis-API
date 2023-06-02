@@ -1,4 +1,5 @@
 import "./loadEnvironments.js";
+import mongoose from "mongoose";
 import createDebug from "debug";
 import app from "./server/app.js";
 import chalk from "chalk";
@@ -18,6 +19,15 @@ app.listen(port, () => {
 });
 
 try {
+  mongoose.set("debug", false);
+  mongoose.set("toJSON", {
+    virtuals: true,
+    versionKey: false,
+    transform(doc, ret) {
+      delete ret._id;
+    },
+  });
+
   await connectedDatabase(mongoDbConnetion);
 
   debug(chalk.blue(`Connnected to database`));

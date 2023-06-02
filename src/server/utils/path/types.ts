@@ -1,5 +1,5 @@
 export interface PathStructure {
-  slash: string;
+  root: string;
   login: string;
   user: string;
   figures: string;
