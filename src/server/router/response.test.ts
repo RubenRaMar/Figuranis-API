@@ -1,6 +1,6 @@
 import "../../loadEnvironments.js";
 import request from "supertest";
-import app from "../app";
+import app from "../app.js";
 import {
   privateMessageList,
   statusCodeList,
@@ -19,7 +19,7 @@ describe("Given a pingController controller", () => {
       const expectedMessage = privateMessageList.ok.pong;
 
       const response: CustomResponse = await request(app)
-        .get(pathList.slash)
+        .get(pathList.root)
         .expect(expectedStatusCode);
 
       expect(response.body).toStrictEqual({ message: expectedMessage });

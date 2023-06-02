@@ -4,7 +4,7 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 import connectedDatabase from "../../database/connectedDatabase";
 import mongoose from "mongoose";
 import Figure from "../../../database/models/Figure";
-import { figuresMock } from "../../../mocks/figures/fuguresMocks";
+import { figuresMock } from "../../../mocks/figures/figuresMocks.js";
 import app from "../../app";
 import pathList from "../../utils/path/path";
 import { tokenMock } from "../../../mocks/user/userMoks.js";
@@ -37,7 +37,7 @@ describe("Given a get method and '/figures' path", () => {
         .set("Authorization", `Bearer ${tokenMock}`)
         .expect(statusCodeList.ok);
 
-      expect(response.body.figure).toHaveLength(5);
+      expect(response.body.figures).toHaveLength(5);
     });
   });
 

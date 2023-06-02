@@ -3,7 +3,7 @@ import getFigures from "./figureController.js";
 import type CustomRequest from "./types.js";
 import { type CustomResponse } from "../../../types.js";
 import { statusCodeList } from "../../utils/responseData/responseData.js";
-import { figuresMock } from "../../../mocks/figures/fuguresMocks.js";
+import { figuresMock } from "../../../mocks/figures/figuresMocks.js";
 import Figure from "../../../database/models/Figure.js";
 
 type CustomRequestBody = Pick<CustomRequest, "userId">;
@@ -56,7 +56,7 @@ describe("Given a getFigures middleware", () => {
         next as NextFunction
       );
 
-      expect(res.json).toHaveBeenCalledWith({ figure: figuresWithUserId });
+      expect(res.json).toHaveBeenCalledWith({ figures: figuresWithUserId });
     });
   });
 

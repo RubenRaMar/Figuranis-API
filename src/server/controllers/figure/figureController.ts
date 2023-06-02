@@ -1,7 +1,7 @@
 import { type NextFunction, type Response } from "express";
 import type CustomRequest from "./types";
 import Figure from "../../../database/models/Figure.js";
-import { statusCodeList } from "../../utils/responseData/responseData";
+import { statusCodeList } from "../../utils/responseData/responseData.js";
 
 const getFigures = async (
   req: CustomRequest,
@@ -11,9 +11,9 @@ const getFigures = async (
   const { userId } = req;
 
   try {
-    const figure = await Figure.find({}, { user: userId }).limit(10).exec();
+    const figures = await Figure.find({ user: userId }).limit(10).exec();
 
-    res.status(statusCodeList.ok).json({ figure });
+    res.status(statusCodeList.ok).json({ figures });
   } catch (error: unknown) {
     next(error);
   }

@@ -15,7 +15,7 @@ export const figuresMock: FigureIdData[] = [
     price: 95,
     image:
       "https://www.kaionation.com/wp-content/uploads/2023/05/Image_20230506143056-681x1024.jpg",
-    user: new Types.ObjectId("1a2b3c4d5e6f7a8b9c0d1e2f"),
+    user: new Types.ObjectId("646fc50910c8e8c5b17d54a7"),
   },
   {
     _id: new Types.ObjectId("a1b2c3d4e5f6a7b8c9d0e1f2"),
@@ -29,7 +29,7 @@ export const figuresMock: FigureIdData[] = [
     weight: 5.23,
     price: 245.99,
     image: "https://www.kaionation.com/wp-content/uploads/2023/04/aa-43.jpg",
-    user: new Types.ObjectId("1234567890abcdefabcdef12"),
+    user: new Types.ObjectId("646fc50910c8e8c5b17d54a7"),
   },
   {
     _id: new Types.ObjectId("abcdef123456789012345678"),
@@ -44,7 +44,7 @@ export const figuresMock: FigureIdData[] = [
     price: 269.9,
     image:
       "https://www.kaionation.com/wp-content/uploads/2023/05/44-2-641x1024.webp",
-    user: new Types.ObjectId("1a2b3c4d5e6f7a8b9c0d1e2f"),
+    user: new Types.ObjectId("646fc50910c8e8c5b17d54a7"),
   },
   {
     _id: new Types.ObjectId("0123456789abcdefabcdef12"),
@@ -59,7 +59,7 @@ export const figuresMock: FigureIdData[] = [
     price: 99.9,
     image:
       "https://www.global-freaks.com/196309-pdt_540/dragon-ball-z-metal-cooler-sh-figuarts-tamashii-nations-bandai-spirits.jpg",
-    user: new Types.ObjectId("1234567890abcdefabcdef12"),
+    user: new Types.ObjectId("646fc50910c8e8c5b17d54a7"),
   },
   {
     _id: new Types.ObjectId("f0e1d2c3b4a5968778695a4b"),
@@ -74,6 +74,6 @@ export const figuresMock: FigureIdData[] = [
     price: 69.99,
     image:
       "https://kurogami.com/med/img/productos/37/70/FIGURA_SABER_ALTER_FATE_STAY_NIGHT_HEAVENS_FEEL_POP_UP_PARADE_1.webp",
-    user: new Types.ObjectId("1a2b3c4d5e6f7a8b9c0d1e2f"),
+    user: new Types.ObjectId("646fc50910c8e8c5b17d54a7"),
   },
 ];
