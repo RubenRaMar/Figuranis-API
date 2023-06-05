@@ -24,23 +24,49 @@
     {
       "name": "POST \"/user/login\"",
       "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4OTA4MDk4MDk4MDk4MDk4IiwibmFtZSI6ImlzZGljb3VkYWhzIiwiaWF0IjoxNjg0MTUxNzEwLCJleHAiOjE2ODQyMzgxMTB9.8nONfhY3flP0sw2T1251a6freHSEb1eF4hRcSiA9gyA",
+              "type": "string"
             }
-          }
+          ]
         },
+        "method": "GET",
+        "header": [],
         "url": {
-          "raw": "http://localhost:4005/user/login",
+          "raw": "http://localhost:4005/figured",
           "protocol": "http",
           "host": ["localhost"],
           "port": "4005",
-          "path": ["user", "login"]
+          "path": ["figured"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET \"/figures\"",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmYzUwOTEwYzhlOGM1YjE3ZDU0YTciLCJuYW1lIjoiYWRtaW4ifQ.AA6PgjleVntcg-dwYmtIM7Xrx2CLP1B0AqImK1b3W8I",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4005/figures",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4005",
+          "path": ["figures"]
         }
       },
       "response": []

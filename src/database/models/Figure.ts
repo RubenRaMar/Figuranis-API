@@ -47,6 +47,6 @@ const figureSchema = new Schema({
   },
 });
 
-const Figure = model("Figure", figureSchema, "figuranis");
+const Figure = model("Figure", figureSchema, "figures");
 
 export default Figure;
