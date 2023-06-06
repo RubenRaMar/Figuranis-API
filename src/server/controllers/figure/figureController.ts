@@ -2,8 +2,8 @@ import { type Request, type NextFunction, type Response } from "express";
 import type CustomRequest from "./types";
 import Figure from "../../../database/models/Figure.js";
 import { statusCodeList } from "../../utils/responseData/responseData.js";
-import { privateMessageList } from "../../utils/responseData/responseData";
-import CustomError from "../../Classes/CustomError/CustomError";
+import { privateMessageList } from "../../utils/responseData/responseData.js";
+import CustomError from "../../Classes/CustomError/CustomError.js";
 
 export const getFigures = async (
   req: CustomRequest,
