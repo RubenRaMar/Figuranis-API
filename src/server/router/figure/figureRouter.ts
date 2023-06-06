@@ -9,6 +9,6 @@ const figureRouter = Router();
 
 figureRouter.get(pathList.root, getFigures);
 
-figureRouter.delete(`${pathList.delete}/:id`, deleteFigure);
+figureRouter.delete(`${pathList.delete}`, deleteFigure);
 
 export default figureRouter;
