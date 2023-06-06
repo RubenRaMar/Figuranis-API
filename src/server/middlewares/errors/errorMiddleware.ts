@@ -19,7 +19,7 @@ export const endpointNotFound = (
   _res: Response,
   next: NextFunction
 ) => {
-  const statusCode = statusCodeList.endpointNotFound;
+  const statusCode = statusCodeList.notFound;
   const privatMessage = privateMessageList.endpointNotFound;
   const publicMessage = publicMessageList.endpointNotFound;
 

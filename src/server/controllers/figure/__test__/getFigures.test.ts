@@ -1,10 +1,10 @@
 import { type NextFunction, type Response } from "express";
-import getFigures from "./figureController.js";
-import type CustomRequest from "./types.js";
-import { type CustomResponse } from "../../../types.js";
-import { statusCodeList } from "../../utils/responseData/responseData.js";
-import { figuresMock } from "../../../mocks/figures/figuresMocks.js";
-import Figure from "../../../database/models/Figure.js";
+import type CustomRequest from "../types.js";
+import { type CustomResponse } from "../../../../types.js";
+import { statusCodeList } from "../../../utils/responseData/responseData.js";
+import { figuresMock } from "../../../../mocks/figures/figuresMocks.js";
+import Figure from "../../../../database/models/Figure.js";
+import { getFigures } from "../figureController.js";
 
 type CustomRequestBody = Pick<CustomRequest, "userId">;
 

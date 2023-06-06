@@ -3,4 +3,5 @@ export interface PathStructure {
   login: string;
   user: string;
   figures: string;
+  delete: string;
 }

@@ -1,7 +1,7 @@
 import { type Request } from "express";
 import type * as core from "express-serve-static-core";
 
-export interface CustomRequest<
+export interface AuthRequest<
   P = core.ParamsDictionary,
   ResBody = any,
   ReqBody = any,

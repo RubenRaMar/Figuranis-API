@@ -1,7 +1,7 @@
 export interface StatusCodeList {
   ok: number;
   wrongCredentials: number;
-  endpointNotFound: number;
+  notFound: number;
   generalError: number;
   badRequest: number;
 }
@@ -12,6 +12,8 @@ export interface MessageList {
   endpointNotFound: string;
   generalError: string;
   badRequest: string;
+  delete: string;
+  deleteError: string;
 }
 
 interface OkStructure {
