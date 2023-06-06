@@ -69,7 +69,7 @@ describe("Given a endpointNotFound middleware", () => {
   describe("When it invoked", () => {
     test("Then it should call a next function with a error 'Endpoint not found'", () => {
       const error = new CustomError(
-        statusCodeList.endpointNotFound,
+        statusCodeList.notFound,
         privateMessageList.endpointNotFound
       );
 

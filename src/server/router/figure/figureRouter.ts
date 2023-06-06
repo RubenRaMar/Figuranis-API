@@ -1,6 +1,6 @@
 import { Router } from "express";
-import getFigures from "../../controllers/figure/figureController.js";
 import pathList from "../../utils/path/path.js";
+import { getFigures } from "../../controllers/figure/figureController.js";
 
 const figureRouter = Router();
 

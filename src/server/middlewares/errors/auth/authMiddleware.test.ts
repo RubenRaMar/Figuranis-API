@@ -1,8 +1,8 @@
 import { type Request, type Response, type NextFunction } from "express";
-import { type CustomRequest } from "./types.js";
 import auth from "./authMiddleware.js";
 import jwt from "jsonwebtoken";
 import CustomError from "../../../Classes/CustomError/CustomError.js";
+import type CustomRequest from "../../../controllers/figure/types.js";
 
 type CustomRequestHeader = Pick<Request, "header">;
 
