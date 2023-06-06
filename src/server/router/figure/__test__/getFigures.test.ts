@@ -1,14 +1,15 @@
-import "../../../loadEnvironments.js";
+import "../../../../loadEnvironments.js";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import connectedDatabase from "../../database/connectedDatabase";
+import connectedDatabase from "../../../database/connectedDatabase.js";
 import mongoose from "mongoose";
-import Figure from "../../../database/models/Figure";
-import { figuresMock } from "../../../mocks/figures/figuresMocks.js";
-import app from "../../app";
-import pathList from "../../utils/path/path";
-import { tokenMock } from "../../../mocks/user/userMoks.js";
-import { statusCodeList } from "../../utils/responseData/responseData.js";
+import Figure from "../../../../database/models/Figure.js";
+import { figuresMock } from "../../../../mocks/figures/figuresMocks.js";
+import app from "../../../app.js";
+import pathList from "../../../utils/path/path.js";
+import { tokenMock } from "../../../../mocks/user/userMoks.js";
+import { statusCodeList } from "../../../utils/responseData/responseData.js";
+
 let server: MongoMemoryServer;
 
 beforeAll(async () => {
