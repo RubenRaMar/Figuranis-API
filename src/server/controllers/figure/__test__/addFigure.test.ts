@@ -62,7 +62,7 @@ describe("Given a addFigure controller", () => {
         privateMessageList.addError
       );
 
-      Figure.create = jest.fn().mockRejectedValue(error);
+      Figure.create = jest.fn().mockResolvedValue(undefined);
 
       await addFigure(
         req as CustomRequest,
