@@ -27,7 +27,7 @@ describe("Given a addFigure controller", () => {
       userId: "646fc50910c8e8c5b17d54a7",
     };
 
-    test("Then it should call response's method status with 200", async () => {
+    test("Then it should call response's method status with 201", async () => {
       await addFigure(
         req as CustomRequest,
         res as Response,
@@ -37,7 +37,7 @@ describe("Given a addFigure controller", () => {
       expect(res.status).toHaveBeenCalledWith(statusCodeList.add);
     });
 
-    test("Then it should call response's method json with a 'The figure has been removed'", async () => {
+    test("Then it should call response's method json with a 'Figure added correctly'", async () => {
       await addFigure(
         req as CustomRequest,
         res as Response,

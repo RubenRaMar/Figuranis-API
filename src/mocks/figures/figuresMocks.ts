@@ -1,5 +1,6 @@
 import { Types } from "mongoose";
 import { type FigureIdData } from "../../types.js";
+import { type RequestFigureData } from "../../types.js";
 
 export const figuresMock: FigureIdData[] = [
   {
@@ -77,3 +78,17 @@ export const figuresMock: FigureIdData[] = [
     user: new Types.ObjectId("646fc50910c8e8c5b17d54a7"),
   },
 ];
+
+export const requestFiguresMock: RequestFigureData = {
+  title: "Goku SS4",
+  character: "Goku",
+  franchise: "Dragon Ball",
+  purchased: true,
+  manufacturer: "Break Studio",
+  material: "Resin",
+  size: 31,
+  weight: 2.67,
+  price: 95,
+  image:
+    "https://www.kaionation.com/wp-content/uploads/2023/05/Image_20230506143056-681x1024.jpg",
+};
