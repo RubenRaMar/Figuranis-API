@@ -3,11 +3,11 @@ import { Schema, Types, model } from "mongoose";
 const figureSchema = new Schema({
   title: {
     type: String,
-    unique: true,
+    required: true,
   },
   character: {
     type: String,
-    required: true,
+    unique: true,
   },
   franchise: {
     type: String,
@@ -40,6 +40,7 @@ const figureSchema = new Schema({
   user: {
     type: Types.ObjectId,
     ref: "User",
+    required: true,
   },
   purchased: {
     type: Boolean,

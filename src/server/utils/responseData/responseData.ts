@@ -2,6 +2,7 @@ import { type MessageList, type StatusCodeList } from "./types.js";
 
 export const statusCodeList: StatusCodeList = {
   ok: 200,
+  add: 201,
   badRequest: 400,
   wrongCredentials: 401,
   notFound: 404,
@@ -19,6 +20,8 @@ export const publicMessageList: MessageList = {
   generalError: "The server has failed, please try again in a few minutes",
   delete: "The figure has been removed",
   deleteError: "No figure found",
+  add: "Figure added correctly",
+  addError: "figure could not be added",
 };
 
 export const privateMessageList: MessageList = {
@@ -32,4 +35,6 @@ export const privateMessageList: MessageList = {
   generalError: "Internal Server Error",
   delete: "The figure has been removed",
   deleteError: "No figure found",
+  add: "Figure added correctly",
+  addError: "figure could not be added",
 };

@@ -2,7 +2,7 @@ import { type Request, type Response, type NextFunction } from "express";
 import auth from "./authMiddleware.js";
 import jwt from "jsonwebtoken";
 import CustomError from "../../../Classes/CustomError/CustomError.js";
-import type CustomRequest from "../../../controllers/figure/types.js";
+import type CustomRequestStructure from "../../../controllers/figure/types.js";
 
 type CustomRequestHeader = Pick<Request, "header">;
 
@@ -18,7 +18,11 @@ describe("Given a authMiddleware function", () => {
 
       jwt.verify = jest.fn().mockReturnValue(token);
 
-      auth(req as CustomRequest, res as Response, next as NextFunction);
+      auth(
+        req as CustomRequestStructure,
+        res as Response,
+        next as NextFunction
+      );
 
       expect(next).toHaveBeenCalledWith();
     });
@@ -38,7 +42,11 @@ describe("Given a authMiddleware function", () => {
 
       jwt.verify = jest.fn().mockReturnValue(token);
 
-      auth(req as CustomRequest, res as Response, next as NextFunction);
+      auth(
+        req as CustomRequestStructure,
+        res as Response,
+        next as NextFunction
+      );
 
       expect(next).toHaveBeenCalledWith(error);
     });

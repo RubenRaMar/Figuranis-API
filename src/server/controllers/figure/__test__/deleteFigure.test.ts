@@ -54,7 +54,7 @@ describe("Given a deleteFigure controller", () => {
     });
   });
 
-  describe("When you receive a request for a figure that does not exist", () => {
+  describe("When it receive a request for a figure that does not exist", () => {
     test("Then it should invoke to next funtion with a error", async () => {
       const req: Partial<AuthRequest> = {
         params: { id: "343214" },
