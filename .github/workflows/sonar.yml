@@ -21,6 +21,7 @@ jobs:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           DEBUG: ${{ secrets.DEBUG }}
           MONGODB_CONNECTION: ${{ secrets.MONGO_DB_CONNECTION }}
+          ALLOEWD_ORIGIN: ${{ secrets.ALLOEWD_ORIGIN}}
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:

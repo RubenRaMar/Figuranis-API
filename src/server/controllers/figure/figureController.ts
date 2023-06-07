@@ -1,12 +1,15 @@
 import { type Request, type NextFunction, type Response } from "express";
-import type CustomRequest from "./types";
+import type CustomRequestStructure from "./types";
 import Figure from "../../../database/models/Figure.js";
-import { statusCodeList } from "../../utils/responseData/responseData.js";
-import { privateMessageList } from "../../utils/responseData/responseData.js";
+import {
+  statusCodeList,
+  privateMessageList,
+} from "../../utils/responseData/responseData.js";
 import CustomError from "../../Classes/CustomError/CustomError.js";
+import { Types } from "mongoose";
 
 export const getFigures = async (
-  req: CustomRequest,
+  req: CustomRequestStructure,
   res: Response,
   next: NextFunction
 ) => {
@@ -32,10 +35,39 @@ export const deleteFigure = async (
     const figureRemoved = await Figure.findByIdAndDelete(id).exec();
 
     if (!figureRemoved) {
-      throw new CustomError(404, privateMessageList.deleteError);
+      throw new CustomError(
+        statusCodeList.notFound,
+        privateMessageList.deleteError
+      );
     }
 
     res.status(statusCodeList.ok).json({ message: privateMessageList.delete });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const addFigure = async (
+  req: CustomRequestStructure,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { userId, body } = req;
+
+    const addedFigure = await Figure.create({
+      ...body,
+      user: new Types.ObjectId(userId),
+    });
+
+    if (!addedFigure) {
+      throw new CustomError(
+        statusCodeList.badRequest,
+        privateMessageList.addError
+      );
+    }
+
+    res.status(statusCodeList.add).json({ message: privateMessageList.add });
   } catch (error) {
     next(error);
   }

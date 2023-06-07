@@ -1,5 +1,6 @@
 export interface StatusCodeList {
   ok: number;
+  add: number;
   wrongCredentials: number;
   notFound: number;
   generalError: number;
@@ -14,6 +15,8 @@ export interface MessageList {
   badRequest: string;
   delete: string;
   deleteError: string;
+  add: string;
+  addError: string;
 }
 
 interface OkStructure {

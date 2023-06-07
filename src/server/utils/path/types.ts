@@ -4,4 +4,5 @@ export interface PathStructure {
   user: string;
   figures: string;
   delete: string;
+  add: string;
 }

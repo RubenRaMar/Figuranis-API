@@ -22,6 +22,19 @@ export interface FigureData {
   user: Types.ObjectId;
 }
 
+export interface RequestFigureData {
+  title: string;
+  character: string;
+  franchise: string;
+  purchased: boolean;
+  manufacturer: string;
+  material: string;
+  size: number;
+  weight: number;
+  price: number;
+  image: string;
+}
+
 export interface FigureIdData extends FigureData {
   _id: Types.ObjectId;
 }
