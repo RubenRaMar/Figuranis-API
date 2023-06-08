@@ -1,6 +1,5 @@
 import { Types } from "mongoose";
-import { type FigureIdData } from "../../types.js";
-import { type RequestFigureData } from "../../types.js";
+import { type FigureIdData, type RequestFigureData } from "../../types.js";
 
 export const figuresMock: FigureIdData[] = [
   {

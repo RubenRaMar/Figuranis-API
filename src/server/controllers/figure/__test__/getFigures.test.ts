@@ -26,7 +26,7 @@ describe("Given a getFigures middleware", () => {
 
   const next = jest.fn();
 
-  describe("When it invoked with a suer id", () => {
+  describe("When it invoked with a user id", () => {
     const figuresWithUserId = figuresMock.filter(
       (figure) => figure.user.toString() === userId
     );
@@ -37,7 +37,7 @@ describe("Given a getFigures middleware", () => {
       }),
     });
 
-    test("Then it should respons's with a 200 staus code", async () => {
+    test("Then it should response with a 200 staus code", async () => {
       const expectedStatusCode = statusCodeList.ok;
 
       await getFigures(
@@ -49,7 +49,7 @@ describe("Given a getFigures middleware", () => {
       expect(res.status).toHaveBeenCalledWith(expectedStatusCode);
     });
 
-    test("Then it should respons's with a figures belonging to the user", async () => {
+    test("Then it should response with a figures belonging to the user", async () => {
       await getFigures(
         req as CustomRequestStructure,
         res as Response,
