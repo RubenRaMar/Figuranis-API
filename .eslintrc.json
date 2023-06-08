@@ -11,6 +11,7 @@
       "rules": {
         "no-unused-vars": "warn",
         "no-console": "error",
+        "no-duplicate-imports": "error",
         "@typescript-eslint/consistent-type-definitions": [
           "error",
           "interface"

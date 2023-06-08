@@ -33,7 +33,7 @@ describe("Given a delete method and '/delete/:id' path", () => {
     await Figure.create(figuresMock);
   });
 
-  describe("When it receives a request with an id of a figure", () => {
+  describe("When it receives a request with an id 'a1b2c3d4e5f6a7b8c9d0e1f2' of a figure", () => {
     test("Then it should return a response with 200 status code and 'The figure has been removed'", async () => {
       const id = "a1b2c3d4e5f6a7b8c9d0e1f2";
 
@@ -46,7 +46,7 @@ describe("Given a delete method and '/delete/:id' path", () => {
     });
   });
 
-  describe("When it receives a request with a non-existent id", () => {
+  describe("When it receives a request with a non-existent id '5fbd2a81f4b3c96d58d32c9a'", () => {
     test("Then it should return a response with 404 status code and 'No figure found'", async () => {
       const id = "5fbd2a81f4b3c96d58d32c9a";
 
