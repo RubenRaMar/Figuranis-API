@@ -67,7 +67,7 @@ export const addFigure = async (
       );
     }
 
-    res.status(statusCodeList.add).json({ message: privateMessageList.add });
+    res.status(statusCodeList.add).json({ figure: addedFigure });
   } catch (error) {
     next(error);
   }

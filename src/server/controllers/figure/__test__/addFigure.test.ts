@@ -45,7 +45,7 @@ describe("Given a addFigure controller", () => {
       );
 
       expect(res.json).toHaveBeenCalledWith({
-        message: privateMessageList.add,
+        figure: figureMock,
       });
     });
   });
