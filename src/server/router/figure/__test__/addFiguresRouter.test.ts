@@ -5,12 +5,10 @@ import mongoose from "mongoose";
 import connectedDatabase from "../../../database/connectedDatabase.js";
 import Figure from "../../../../database/models/Figure.js";
 import app from "../../../app.js";
-import {
-  privateMessageList,
-  statusCodeList,
-} from "../../../utils/responseData/responseData.js";
+import { statusCodeList } from "../../../utils/responseData/responseData.js";
 import { tokenMock } from "../../../../mocks/user/userMoks.js";
 import { requestFiguresMock } from "../../../../mocks/figures/figuresMocks.js";
+import pathList from "../../../utils/path/path.js";
 
 let server: MongoMemoryServer;
 
@@ -32,19 +30,19 @@ describe("Given a post method and '/add' path", () => {
   describe("When it receives a request with a figure", () => {
     test("Then it should call response's method status with 200 and with a 'Figure added correctly' message", async () => {
       const response = await request(app)
-        .post("/figures/add")
+        .post(`${pathList.figures}${pathList.add}`)
         .set("Authorization", `Bearer ${tokenMock}`)
         .send(requestFiguresMock)
         .expect(statusCodeList.add);
 
-      expect(response.body.message).toBe(privateMessageList.add);
+      expect(response.body).toHaveProperty("figure");
     });
   });
 
   describe("When it receives a request with an invalid figure", () => {
     test("Then it should respond with status code 400", async () => {
       await request(app)
-        .post(`"/figures/add"}`)
+        .post(`"/figures/add"`)
         .set("Authorization", `Bearer ${tokenMock}`)
         .expect(statusCodeList.badRequest);
     });

@@ -1,16 +1,16 @@
 import "../../../../loadEnvironments.js";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import request from "supertest";
-import connectedDatabase from "../../../database/connectedDatabase";
+import connectedDatabase from "../../../database/connectedDatabase.js";
 import mongoose from "mongoose";
-import Figure from "../../../../database/models/Figure";
-import { figuresMock } from "../../../../mocks/figures/figuresMocks";
-import app from "../../../app";
-import { tokenMock } from "../../../../mocks/user/userMoks";
+import Figure from "../../../../database/models/Figure.js";
+import { figuresMock } from "../../../../mocks/figures/figuresMocks.js";
+import app from "../../../app.js";
+import { tokenMock } from "../../../../mocks/user/userMoks.js";
 import {
   privateMessageList,
   statusCodeList,
-} from "../../../utils/responseData/responseData";
+} from "../../../utils/responseData/responseData.js";
 
 let server: MongoMemoryServer;
 

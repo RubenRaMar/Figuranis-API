@@ -8,6 +8,4 @@ const loginSchema = {
   }),
 };
 
-const loginValidation = validate(loginSchema, {}, { abortEarly: false });
-
-export default loginValidation;
+export const loginValidation = validate(loginSchema, {}, { abortEarly: false });
