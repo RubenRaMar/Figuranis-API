@@ -1,4 +1,5 @@
 import { type Request, type NextFunction, type Response } from "express";
+import { Types } from "mongoose";
 import type CustomRequestStructure from "./types";
 import Figure from "../../../database/models/Figure.js";
 import {
@@ -6,19 +7,30 @@ import {
   privateMessageList,
 } from "../../utils/responseData/responseData.js";
 import CustomError from "../../Classes/CustomError/CustomError.js";
-import { Types } from "mongoose";
 
 export const getFigures = async (
   req: CustomRequestStructure,
   res: Response,
   next: NextFunction
 ) => {
-  const { userId } = req;
+  const {
+    userId,
+    query: { limit, skip },
+  } = req;
+
+  const newLimit = Number(limit);
+  const newSkip = Number(skip) * newLimit;
 
   try {
-    const figures = await Figure.find({ user: userId }).limit(10).exec();
+    const figures = await Figure.find({ user: userId })
+      .sort({ _id: -1 })
+      .skip(newSkip)
+      .limit(newLimit)
+      .exec();
 
-    res.status(statusCodeList.ok).json({ figures });
+    const length = await Figure.where({ user: userId }).countDocuments();
+
+    res.status(statusCodeList.ok).json({ figures, length });
   } catch (error: unknown) {
     next(error);
   }

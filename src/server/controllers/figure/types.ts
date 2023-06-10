@@ -6,6 +6,10 @@ interface CustomRequest extends Request {
   params: {
     figureId: string;
   };
+  query: {
+    skip: string;
+    limit: string;
+  };
   body: RequestFigureData;
 }
 
