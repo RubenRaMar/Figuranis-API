@@ -7,7 +7,7 @@ const figureSchema = new Schema({
   },
   character: {
     type: String,
-    unique: true,
+    required: true,
   },
   franchise: {
     type: String,
