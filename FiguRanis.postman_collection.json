@@ -34,14 +34,23 @@
             }
           ]
         },
-        "method": "GET",
+        "method": "POST",
         "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
         "url": {
-          "raw": "http://localhost:4005/figured",
+          "raw": "http://localhost:4005/user/login",
           "protocol": "http",
           "host": ["localhost"],
           "port": "4005",
-          "path": ["figured"]
+          "path": ["user", "login"]
         }
       },
       "response": []
@@ -67,6 +76,65 @@
           "host": ["localhost"],
           "port": "4005",
           "path": ["figures"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE \"/delete\"",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmYzUwOTEwYzhlOGM1YjE3ZDU0YTciLCJuYW1lIjoiYWRtaW4ifQ.AA6PgjleVntcg-dwYmtIM7Xrx2CLP1B0AqImK1b3W8I",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4005/figures/delete/647b31de62b8689e164a8d3a",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4005",
+          "path": ["figures", "delete", "647b31de62b8689e164a8d3a"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST \"/add\"",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmYzUwOTEwYzhlOGM1YjE3ZDU0YTciLCJuYW1lIjoiYWRtaW4ifQ.AA6PgjleVntcg-dwYmtIM7Xrx2CLP1B0AqImK1b3W8I",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"title\":\"Dragon Ball Fat Buu BT Studio\",\r\n\"character\":\"Fat Buu\",\r\n\"franchise\":\"Dragon Ball\",\r\n\"purchased\":false,\r\n\"manufacturer\":\"BT Studio\",\r\n\"material\":\"Resin\",\r\n\"size\":30,\r\n\"weight\":2.87,\r\n\"price\":205.4,\r\n\"image\":\"https://i.ibb.co/rsWcdcc/fat-boo-dog.webp\"\r\n\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4005/figures/add-figure",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4005",
+          "path": ["figures", "add-figure"]
         }
       },
       "response": []

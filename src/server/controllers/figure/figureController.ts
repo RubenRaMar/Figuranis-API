@@ -19,7 +19,7 @@ export const getFigures = async (
   } = req;
 
   const newLimit = Number(limit);
-  const newSkip = Number(skip) * newLimit;
+  const newSkip = Number(skip);
 
   try {
     const figures = await Figure.find({ user: userId })
