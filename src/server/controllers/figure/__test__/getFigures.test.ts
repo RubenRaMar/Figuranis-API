@@ -6,7 +6,7 @@ import { figuresMock } from "../../../../mocks/figures/figuresMocks.js";
 import Figure from "../../../../database/models/Figure.js";
 import { getFigures } from "../figureController.js";
 
-type CustomRequestBody = Pick<CustomRequestStructure, "userId">;
+type CustomRequestBody = Pick<CustomRequestStructure, "userId" | "query">;
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -14,9 +14,14 @@ beforeEach(() => {
 
 describe("Given a getFigures middleware", () => {
   const userId = "1a2b3c4d5e6f7a8b9c0d1e2f";
+  const query = {
+    skip: "1",
+    limit: "10",
+  };
 
   const req: CustomRequestBody = {
     userId,
+    query,
   };
 
   const res: CustomResponse = {
@@ -26,15 +31,23 @@ describe("Given a getFigures middleware", () => {
 
   const next = jest.fn();
 
-  describe("When it invoked with a user id", () => {
-    const figuresWithUserId = figuresMock.filter(
-      (figure) => figure.user.toString() === userId
-    );
+  const figuresWithUserId = figuresMock.filter(
+    (figure) => figure.user.toString() === userId
+  );
 
+  describe("When it invoked with a user id", () => {
     Figure.find = jest.fn().mockReturnValue({
-      limit: jest.fn().mockReturnValue({
-        exec: jest.fn().mockResolvedValue(figuresWithUserId),
+      sort: jest.fn().mockReturnValue({
+        skip: jest.fn().mockReturnValue({
+          limit: jest.fn().mockReturnValue({
+            exec: jest.fn().mockResolvedValue(figuresWithUserId),
+          }),
+        }),
       }),
+    });
+
+    Figure.where = jest.fn().mockReturnValue({
+      countDocuments: jest.fn().mockResolvedValue(figuresWithUserId.length),
     });
 
     test("Then it should response with a 200 staus code", async () => {
@@ -56,7 +69,10 @@ describe("Given a getFigures middleware", () => {
         next as NextFunction
       );
 
-      expect(res.json).toHaveBeenCalledWith({ figures: figuresWithUserId });
+      expect(res.json).toHaveBeenCalledWith({
+        figures: figuresWithUserId,
+        length: figuresWithUserId.length,
+      });
     });
   });
 
@@ -65,9 +81,17 @@ describe("Given a getFigures middleware", () => {
       const expectedError = new Error("Database error");
 
       Figure.find = jest.fn().mockReturnValue({
-        limit: jest.fn().mockReturnValue({
-          exec: jest.fn().mockRejectedValue(expectedError),
+        sort: jest.fn().mockReturnValue({
+          skip: jest.fn().mockReturnValue({
+            limit: jest.fn().mockReturnValue({
+              exec: jest.fn().mockRejectedValue(expectedError),
+            }),
+          }),
         }),
+      });
+
+      Figure.where = jest.fn().mockReturnValue({
+        countDocuments: jest.fn().mockResolvedValue(figuresWithUserId.length),
       });
 
       await getFigures(
