@@ -9,7 +9,7 @@ interface CustomRequest extends Request {
   query: {
     skip: string;
     limit: string;
-    purchased: string;
+    filter: string;
   };
   body: RequestFigureData;
 }
