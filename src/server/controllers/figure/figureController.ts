@@ -15,20 +15,33 @@ export const getFigures = async (
 ) => {
   const {
     userId,
-    query: { limit, skip },
+    query: { limit, skip, purchased },
   } = req;
 
   const newLimit = Number(limit);
   const newSkip = Number(skip);
 
+  let figureQuery = {};
+
+  if (userId) {
+    figureQuery = { user: userId };
+  }
+
+  if (purchased) {
+    figureQuery = { ...figureQuery, purchased: "false" };
+  }
+
   try {
-    const figures = await Figure.find({ user: userId })
+    const figures = await Figure.find(figureQuery)
       .sort({ _id: -1 })
       .skip(newSkip)
       .limit(newLimit)
       .exec();
 
-    const length = await Figure.where({ user: userId }).countDocuments();
+    const length = await Figure.where({
+      user: userId,
+      purchased: false,
+    }).countDocuments();
 
     res.status(statusCodeList.ok).json({ figures, length });
   } catch (error: unknown) {
