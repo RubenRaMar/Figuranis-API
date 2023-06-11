@@ -15,7 +15,7 @@ export const getFigures = async (
 ) => {
   const {
     userId,
-    query: { limit, skip, purchased },
+    query: { limit, skip, filter },
   } = req;
 
   const newLimit = Number(limit);
@@ -27,7 +27,7 @@ export const getFigures = async (
     figureQuery = { user: userId };
   }
 
-  if (purchased) {
+  if (filter === "true") {
     figureQuery = { ...figureQuery, purchased: "false" };
   }
 
@@ -38,10 +38,7 @@ export const getFigures = async (
       .limit(newLimit)
       .exec();
 
-    const length = await Figure.where({
-      user: userId,
-      purchased: false,
-    }).countDocuments();
+    const length = await Figure.where(figureQuery).countDocuments();
 
     res.status(statusCodeList.ok).json({ figures, length });
   } catch (error: unknown) {

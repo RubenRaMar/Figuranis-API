@@ -7,11 +7,6 @@ import Figure from "../../../../database/models/Figure.js";
 import { getFigures } from "../figureController.js";
 
 type CustomRequestBody = Pick<CustomRequestStructure, "userId" | "query">;
-interface QueryStructure {
-  skip: string;
-  limit: string;
-  purchased: string;
-}
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -19,10 +14,10 @@ beforeEach(() => {
 
 describe("Given a getFigures middleware", () => {
   const userId = "1a2b3c4d5e6f7a8b9c0d1e2f";
-  const query: QueryStructure = {
+  const query = {
     skip: "1",
     limit: "10",
-    purchased: "false",
+    filter: "true",
   };
 
   const req: CustomRequestBody = {
