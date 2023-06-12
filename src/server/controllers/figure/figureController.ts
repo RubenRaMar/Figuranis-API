@@ -46,6 +46,29 @@ export const getFigures = async (
   }
 };
 
+export const getFigureById = async (
+  req: Request<{ id: string }>,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
+
+  try {
+    const figure = await Figure.find({ _id: id }).exec();
+
+    if (!figure) {
+      throw new CustomError(
+        statusCodeList.notFound,
+        privateMessageList.badRequest
+      );
+    }
+
+    res.status(statusCodeList.ok).json({ figure });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const deleteFigure = async (
   req: Request<{ id: string }>,
   res: Response,
