@@ -57,7 +57,7 @@ describe("Given a getFigureById controller", () => {
         params: { id: "343214" },
       };
 
-      const error = new CustomError(404, privateMessageList.badRequest);
+      const error = new CustomError(404, privateMessageList.deleteError);
 
       Figure.find = jest.fn().mockReturnValue({
         exec: jest.fn().mockResolvedValue(null),

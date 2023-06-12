@@ -56,10 +56,10 @@ export const getFigureById = async (
   try {
     const figure = await Figure.find({ _id: id }).exec();
 
-    if (!figure) {
+    if (!figure || figure.length === 0) {
       throw new CustomError(
         statusCodeList.notFound,
-        privateMessageList.badRequest
+        privateMessageList.deleteError
       );
     }
 
