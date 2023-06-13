@@ -22,6 +22,77 @@
       "response": []
     },
     {
+      "name": "GET \"/figures\"",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmYzUwOTEwYzhlOGM1YjE3ZDU0YTciLCJuYW1lIjoiYWRtaW4ifQ.AA6PgjleVntcg-dwYmtIM7Xrx2CLP1B0AqImK1b3W8I",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:4005/figures?purchased=true&skip=0&limit=10",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4005",
+          "path": ["figures"],
+          "query": [
+            {
+              "key": "purchased",
+              "value": "true"
+            },
+            {
+              "key": "skip",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET\"/figures/:id\"",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmYzUwOTEwYzhlOGM1YjE3ZDU0YTciLCJuYW1lIjoiYWRtaW4ifQ.AA6PgjleVntcg-dwYmtIM7Xrx2CLP1B0AqImK1b3W8I",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4005/figures/64864ec6ef7a51533cd04eab",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4005",
+          "path": ["figures", "64864ec6ef7a51533cd04eab"]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "POST \"/user/login\"",
       "request": {
         "auth": {
@@ -51,31 +122,6 @@
           "host": ["localhost"],
           "port": "4005",
           "path": ["user", "login"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "GET \"/figures\"",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmYzUwOTEwYzhlOGM1YjE3ZDU0YTciLCJuYW1lIjoiYWRtaW4ifQ.AA6PgjleVntcg-dwYmtIM7Xrx2CLP1B0AqImK1b3W8I",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:4005/figures",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "4005",
-          "path": ["figures"]
         }
       },
       "response": []
@@ -135,6 +181,40 @@
           "host": ["localhost"],
           "port": "4005",
           "path": ["figures", "add-figure"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT \"/figures\"",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmYzUwOTEwYzhlOGM1YjE3ZDU0YTciLCJuYW1lIjoiYWRtaW4ifQ.AA6PgjleVntcg-dwYmtIM7Xrx2CLP1B0AqImK1b3W8I",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n        \"title\": \"Dragon Ball Jimei Palace Bulma Licensed\",\r\n        \"character\": \"Bulma\",\r\n        \"franchise\": \"Dragon Ball\",\r\n        \"purchased\": false,\r\n        \"manufacturer\": \"Jimei Palace\",\r\n        \"material\": \"Resin\",\r\n        \"size\": 38.6,\r\n        \"weight\": 4.53,\r\n        \"price\": 895,\r\n        \"image\": \"https://i.ibb.co/GcmSjYx/bulma.webp\",\r\n        \"user\": \"646fc50910c8e8c5b17d54a7\",\r\n        \"id\": \"648887933aca4ea0e73ef1f4\"\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4005/figures/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4005",
+          "path": ["figures", ""]
         }
       },
       "response": []

@@ -1,12 +1,12 @@
 import { type NextFunction, type Response } from "express";
-import type CustomRequestStructure from "../types.js";
 import { type CustomResponse } from "../../../../types.js";
 import { statusCodeList } from "../../../utils/responseData/responseData.js";
 import { figuresMock } from "../../../../mocks/figures/figuresMocks.js";
 import Figure from "../../../../database/models/Figure.js";
 import { getFigures } from "../figureController.js";
+import { type CustomRequest } from "../types.js";
 
-type CustomRequestBody = Pick<CustomRequestStructure, "userId" | "query">;
+type CustomRequestBody = Pick<CustomRequest, "userId" | "query">;
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -55,7 +55,7 @@ describe("Given a getFigures middleware", () => {
       const expectedStatusCode = statusCodeList.ok;
 
       await getFigures(
-        req as CustomRequestStructure,
+        req as CustomRequest,
         res as Response,
         next as NextFunction
       );
@@ -65,7 +65,7 @@ describe("Given a getFigures middleware", () => {
 
     test("Then it should response with a figures belonging to the user", async () => {
       await getFigures(
-        req as CustomRequestStructure,
+        req as CustomRequest,
         res as Response,
         next as NextFunction
       );
@@ -96,7 +96,7 @@ describe("Given a getFigures middleware", () => {
       });
 
       await getFigures(
-        req as CustomRequestStructure,
+        req as CustomRequest,
         res as Response,
         next as NextFunction
       );

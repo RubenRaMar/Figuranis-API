@@ -1,13 +1,9 @@
 import jwt from "jsonwebtoken";
 import { type NextFunction, type Response } from "express";
-import type CustomRequestStructure from "../../../controllers/figure/types.js";
 import CustomError from "../../../Classes/CustomError/CustomError.js";
+import { type CustomRequest } from "../../../controllers/figure/types.js";
 
-const auth = (
-  req: CustomRequestStructure,
-  _res: Response,
-  next: NextFunction
-) => {
+const auth = (req: CustomRequest, _res: Response, next: NextFunction) => {
   const authHeader = req.header("Authorization");
 
   try {
