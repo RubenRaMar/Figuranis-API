@@ -23,7 +23,7 @@ describe("Given a getFigureById controller", () => {
     };
 
     test("Then it should return the figure", async () => {
-      Figure.find = jest.fn().mockReturnValue({
+      Figure.findOne = jest.fn().mockReturnValue({
         exec: jest.fn().mockResolvedValue(figuresMock[0]),
       });
 
@@ -37,7 +37,7 @@ describe("Given a getFigureById controller", () => {
     });
 
     test("Then it should return the 200 status code", async () => {
-      Figure.find = jest.fn().mockReturnValue({
+      Figure.findOne = jest.fn().mockReturnValue({
         exec: jest.fn().mockResolvedValue(figuresMock[0]),
       });
 
@@ -59,7 +59,7 @@ describe("Given a getFigureById controller", () => {
 
       const error = new CustomError(404, privateMessageList.deleteError);
 
-      Figure.find = jest.fn().mockReturnValue({
+      Figure.findOne = jest.fn().mockReturnValue({
         exec: jest.fn().mockResolvedValue(null),
       });
 
