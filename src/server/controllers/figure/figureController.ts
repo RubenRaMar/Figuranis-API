@@ -134,7 +134,7 @@ export const updateFigure = async (
 
     if (!updatedFigure) {
       throw new CustomError(
-        statusCodeList.notFound,
+        statusCodeList.badRequest,
         privateMessageList.updateError
       );
     }
