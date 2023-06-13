@@ -43,7 +43,7 @@ describe("Given a get method and '/figures/:id' path", () => {
         .set("Authorization", `Bearer ${tokenMock}`)
         .expect(statusCodeList.ok);
 
-      expect(response.body.figure).toHaveLength(1);
+      expect(response.body.figure).toHaveProperty("character");
     });
   });
 
