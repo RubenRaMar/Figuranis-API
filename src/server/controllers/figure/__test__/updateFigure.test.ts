@@ -9,7 +9,7 @@ import { updateFigure } from "../figureController";
 import { requestFiguresUdgrateMock } from "../../../../mocks/figures/figuresMocks";
 import { type CustomRequestUpdate } from "../types";
 
-describe("Given a upDate controller", () => {
+describe("Given updateFigure controller", () => {
   const res: Pick<Response, "status" | "json"> = {
     status: jest.fn().mockReturnThis(),
     json: jest.fn(),
