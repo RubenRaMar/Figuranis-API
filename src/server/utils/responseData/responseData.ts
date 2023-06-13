@@ -21,7 +21,9 @@ export const publicMessageList: MessageList = {
   delete: "The figure has been removed",
   deleteError: "No figure found",
   add: "Figure added correctly",
-  addError: "figure could not be added",
+  addError: "Figure could not be added",
+  update: "Correctly updated figure",
+  updateError: "The figure could not be updated",
 };
 
 export const privateMessageList: MessageList = {
@@ -36,5 +38,7 @@ export const privateMessageList: MessageList = {
   delete: "The figure has been removed",
   deleteError: "No figure found",
   add: "Figure added correctly",
-  addError: "figure could not be added",
+  addError: "Figure could not be added",
+  update: "Correctly updated figure",
+  updateError: "The figure could not be updated",
 };

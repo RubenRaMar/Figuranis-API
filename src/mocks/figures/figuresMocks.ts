@@ -1,5 +1,9 @@
 import { Types } from "mongoose";
-import { type FigureIdData, type RequestFigureData } from "../../types.js";
+import {
+  type RequestUpdateFigureStructure,
+  type FigureIdData,
+  type RequestFigureData,
+} from "../../types.js";
 
 export const figuresMock: FigureIdData[] = [
   {
@@ -90,4 +94,36 @@ export const requestFiguresMock: RequestFigureData = {
   price: 95,
   image:
     "https://www.kaionation.com/wp-content/uploads/2023/05/Image_20230506143056-681x1024.jpg",
+};
+
+export const requestFiguresUdgrateMock: RequestUpdateFigureStructure = {
+  id: "5f234c24c2a7890123456789",
+  title: "Goku SS4",
+  character: "Goku",
+  franchise: "Dragon Ball",
+  purchased: true,
+  manufacturer: "Break Studio",
+  material: "Resin",
+  size: 31,
+  weight: 2.67,
+  price: 95,
+  image:
+    "https://www.kaionation.com/wp-content/uploads/2023/05/Image_20230506143056-681x1024.jpg",
+  user: "646fc50910c8e8c5b17d54a7",
+};
+
+export const badRequestFiguresUdgrateMock: RequestUpdateFigureStructure = {
+  id: "5f234c24c2a7753123456789",
+  title: "Goku SS4",
+  character: "Goku",
+  franchise: "Dragon Ball",
+  purchased: true,
+  manufacturer: "Break Studio",
+  material: "Resin",
+  size: 31,
+  weight: 2.67,
+  price: 95,
+  image:
+    "https://www.kaionation.com/wp-content/uploads/2023/05/Image_20230506143056-681x1024.jpg",
+  user: "646fc50910c8e8c5b17d54a7",
 };

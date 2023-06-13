@@ -17,6 +17,8 @@ export interface MessageList {
   deleteError: string;
   add: string;
   addError: string;
+  update: string;
+  updateError: string;
 }
 
 interface OkStructure {

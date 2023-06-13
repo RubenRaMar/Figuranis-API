@@ -1,8 +1,8 @@
 import { type Response, type NextFunction } from "express";
 import { addFigure } from "../figureController";
 import { figuresMock } from "../../../../mocks/figures/figuresMocks";
+import { type CustomRequest } from "../types";
 import Figure from "../../../../database/models/Figure";
-import type CustomRequest from "../types";
 import {
   privateMessageList,
   statusCodeList,

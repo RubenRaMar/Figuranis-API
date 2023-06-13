@@ -1,7 +1,10 @@
 import { type Request } from "express";
-import { type RequestFigureData } from "../../../types";
+import {
+  type RequestUpdateFigureStructure,
+  type RequestFigureData,
+} from "../../../types";
 
-interface CustomRequest extends Request {
+export interface CustomRequest extends Request {
   userId: string;
   params: {
     figureId: string;
@@ -14,4 +17,7 @@ interface CustomRequest extends Request {
   body: RequestFigureData;
 }
 
-export default CustomRequest;
+export interface CustomRequestUpdate extends Request {
+  userId: string;
+  body: RequestUpdateFigureStructure;
+}

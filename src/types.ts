@@ -35,6 +35,11 @@ export interface RequestFigureData {
   image: string;
 }
 
+export interface RequestUpdateFigureStructure extends RequestFigureData {
+  id: string;
+  user: string;
+}
+
 export interface FigureIdData extends FigureData {
   _id: Types.ObjectId;
 }

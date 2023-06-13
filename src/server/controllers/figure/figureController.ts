@@ -1,7 +1,7 @@
 import { type Request, type NextFunction, type Response } from "express";
 import { Types } from "mongoose";
-import type CustomRequestStructure from "./types";
 import Figure from "../../../database/models/Figure.js";
+import { type CustomRequestUpdate, type CustomRequest } from "./types.js";
 import {
   statusCodeList,
   privateMessageList,
@@ -9,7 +9,7 @@ import {
 import CustomError from "../../Classes/CustomError/CustomError.js";
 
 export const getFigures = async (
-  req: CustomRequestStructure,
+  req: CustomRequest,
   res: Response,
   next: NextFunction
 ) => {
@@ -93,7 +93,7 @@ export const deleteFigure = async (
 };
 
 export const addFigure = async (
-  req: CustomRequestStructure,
+  req: CustomRequest,
   res: Response,
   next: NextFunction
 ) => {
@@ -113,6 +113,33 @@ export const addFigure = async (
     }
 
     res.status(statusCodeList.add).json({ figure: addedFigure });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateFigure = async (
+  req: CustomRequestUpdate,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { body, userId } = req;
+
+    const updatedFigure = await Figure.findByIdAndUpdate(body.id, {
+      ...body,
+      user: new Types.ObjectId(userId),
+      _id: new Types.ObjectId(body.id),
+    });
+
+    if (!updatedFigure) {
+      throw new CustomError(
+        statusCodeList.badRequest,
+        privateMessageList.updateError
+      );
+    }
+
+    res.status(statusCodeList.ok).json({ message: privateMessageList.update });
   } catch (error) {
     next(error);
   }

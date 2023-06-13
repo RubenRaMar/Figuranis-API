@@ -184,6 +184,40 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "PUT \"/figures\"",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmYzUwOTEwYzhlOGM1YjE3ZDU0YTciLCJuYW1lIjoiYWRtaW4ifQ.AA6PgjleVntcg-dwYmtIM7Xrx2CLP1B0AqImK1b3W8I",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n        \"title\": \"Dragon Ball Jimei Palace Bulma Licensed\",\r\n        \"character\": \"Bulma\",\r\n        \"franchise\": \"Dragon Ball\",\r\n        \"purchased\": false,\r\n        \"manufacturer\": \"Jimei Palace\",\r\n        \"material\": \"Resin\",\r\n        \"size\": 38.6,\r\n        \"weight\": 4.53,\r\n        \"price\": 895,\r\n        \"image\": \"https://i.ibb.co/GcmSjYx/bulma.webp\",\r\n        \"user\": \"646fc50910c8e8c5b17d54a7\",\r\n        \"id\": \"648887933aca4ea0e73ef1f4\"\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4005/figures/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4005",
+          "path": ["figures", ""]
+        }
+      },
+      "response": []
     }
   ]
 }
