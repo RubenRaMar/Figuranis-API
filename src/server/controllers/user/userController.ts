@@ -36,7 +36,7 @@ const loginUser = async (
     };
 
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET!, {
-      expiresIn: "30d",
+      expiresIn: "300d",
     });
 
     res.status(statusCodeList.ok).json({ token });
