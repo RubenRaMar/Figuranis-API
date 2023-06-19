@@ -91,7 +91,7 @@ describe("Given a post method /user/login endpoint", () => {
       };
 
       const token = jwt.sign(tokenPayload, process.env.JWT_SECRET!, {
-        expiresIn: "30d",
+        expiresIn: "300d",
       });
 
       expect(response.body).toStrictEqual({ token });
