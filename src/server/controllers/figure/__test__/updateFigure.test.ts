@@ -18,9 +18,9 @@ describe("Given updateFigure controller", () => {
   const next = jest.fn();
 
   describe("When it is invoked and receives a figure", () => {
-    Figure.findOneAndUpdate = jest
-      .fn()
-      .mockResolvedValue(requestFiguresUdgrateMock);
+    Figure.findOneAndUpdate = jest.fn().mockReturnValue({
+      exec: jest.fn().mockResolvedValue(requestFiguresUdgrateMock),
+    });
 
     const req: Partial<CustomRequestUpdate> = {
       body: requestFiguresUdgrateMock,
@@ -62,7 +62,9 @@ describe("Given updateFigure controller", () => {
         privateMessageList.updateError
       );
 
-      Figure.findOneAndUpdate = jest.fn().mockResolvedValue(undefined);
+      Figure.findOneAndUpdate = jest.fn().mockReturnValue({
+        exec: jest.fn().mockResolvedValue(undefined),
+      });
 
       await updateFigure(
         req as CustomRequestUpdate,

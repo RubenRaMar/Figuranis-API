@@ -48,7 +48,9 @@ describe("Given a getFigures middleware", () => {
     });
 
     Figure.where = jest.fn().mockReturnValue({
-      countDocuments: jest.fn().mockResolvedValue(figuresWithUserId.length),
+      countDocuments: jest.fn().mockReturnValue({
+        exec: jest.fn().mockResolvedValue(figuresWithUserId.length),
+      }),
     });
 
     test("Then it should response with a 200 staus code", async () => {
@@ -92,7 +94,9 @@ describe("Given a getFigures middleware", () => {
       });
 
       Figure.where = jest.fn().mockReturnValue({
-        countDocuments: jest.fn().mockResolvedValue(figuresWithUserId.length),
+        countDocuments: jest.fn().mockReturnValue({
+          exec: jest.fn().mockResolvedValue(figuresWithUserId.length),
+        }),
       });
 
       await getFigures(

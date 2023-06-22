@@ -38,7 +38,7 @@ export const getFigures = async (
       .limit(newLimit)
       .exec();
 
-    const length = await Figure.where(figureQuery).countDocuments();
+    const length = await Figure.where(figureQuery).countDocuments().exec();
 
     res.status(statusCodeList.ok).json({ figures, length });
   } catch (error: unknown) {
@@ -130,7 +130,7 @@ export const updateFigure = async (
       ...body,
       user: new Types.ObjectId(userId),
       _id: new Types.ObjectId(body.id),
-    });
+    }).exec();
 
     if (!updatedFigure) {
       throw new CustomError(
