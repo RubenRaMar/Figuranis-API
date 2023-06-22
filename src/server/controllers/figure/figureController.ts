@@ -130,7 +130,7 @@ export const updateFigure = async (
       ...body,
       user: new Types.ObjectId(userId),
       _id: new Types.ObjectId(body.id),
-    });
+    }).exec();
 
     if (!updatedFigure) {
       throw new CustomError(
