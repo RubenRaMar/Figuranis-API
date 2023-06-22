@@ -1,3 +1,4 @@
+import jwt, { type JwtPayload } from "jsonwebtoken";
 import { type UserCredentials } from "../../types";
 
 export const userCredentialsMock: UserCredentials = {
@@ -15,5 +16,11 @@ export const userErrorCredientialsMock = {
   password: "",
 };
 
-export const tokenMock =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmYzUwOTEwYzhlOGM1YjE3ZDU0YTciLCJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2ODY0MTM0OTZ9.5XoNWHoBShVwzueW00XYZZarJb5m7hKRunZLPp9v9n0";
+const tokenPayload: JwtPayload = {
+  sub: "6494430a47f8ed0069ec52ac",
+  name: "Gines",
+};
+
+export const tokenMock = jwt.sign(tokenPayload, process.env.JWT_SECRET!, {
+  expiresIn: "30d",
+});
