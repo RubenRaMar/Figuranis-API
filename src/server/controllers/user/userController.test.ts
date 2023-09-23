@@ -4,7 +4,7 @@ import { type NextFunction, type Response } from "express";
 import User from "../../../database/models/User";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import loginUser from "./userController";
+import { loginUser } from "./userController";
 import CustomError from "../../Classes/CustomError/CustomError";
 import { statusCodeList } from "../../utils/responseData/responseData";
 

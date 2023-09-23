@@ -75,7 +75,7 @@ Authorization: Bearer <token>
       "image": "https:/discord/image2.jpg"
     }
   ],
-  "length": 74
+  "length": 2
 }
 ```
 
@@ -146,7 +146,7 @@ Authorization: Bearer <token>
 
 ### Request Body:
 
-````json
+```json
 {
   "title": "Updated Figure",
   "character": "Updated Character",
@@ -159,6 +159,7 @@ Authorization: Bearer <token>
   "price": 200,
   "image": "https:/discord/updated-image.jpg"
 }
+```
 
 ### Response:
 
@@ -166,7 +167,7 @@ Authorization: Bearer <token>
 {
   "message": "The figure could not be updated"
 }
-````
+```
 
 ## <div align="center">👉Add Figure👈</div>
 
@@ -182,40 +183,41 @@ Authorization: Bearer <token>
 
 ### Request Body:
 
-````json
+```json
 {
-"title":"Dragon Ball Fat Buu BT Studio",
-"character":"Fat Buu",
-"franchise":"Dragon Ball",
-"purchased":false,
-"manufacturer":"BT Studio",
-"material":"Resin",
-"size":30,
-"weight":2.87,
-"price":205.4,
-"image":"https://i.ibb.co/rsWcdcc/fat-boo-dog.webp"
+  "title": "Dragon Ball Fat Buu BT Studio",
+  "character": "Fat Buu",
+  "franchise": "Dragon Ball",
+  "purchased": false,
+  "manufacturer": "BT Studio",
+  "material": "Resin",
+  "size": 30,
+  "weight": 2.87,
+  "price": 205.4,
+  "image": "https://i.ibb.co/rsWcdcc/fat-boo-dog.webp"
 }
+```
 
 ### Response:
 
 ```json
 {
-    "figure": {
-        "user": "646fc50910c8e8c5b17d54a7",
-        "id": "6490128f5b7e2763363c4d7b",
-        "title":"Dragon Ball Fat Buu BT Studio",
-        "character":"Fat Buu",
-        "franchise":"Dragon Ball",
-        "purchased":false,
-        "manufacturer":"BT Studio",
-        "material":"Resin",
-        "size":30,
-        "weight":2.87,
-        "price":205.4,
-        "image":"https://i.ibb.co/rsWcdcc/fat-boo-dog.webp"
-    }
+  "figure": {
+    "user": "646fc50910c8e8c5b17d54a7",
+    "id": "6490128f5b7e2763363c4d7b",
+    "title": "Dragon Ball Fat Buu BT Studio",
+    "character": "Fat Buu",
+    "franchise": "Dragon Ball",
+    "purchased": false,
+    "manufacturer": "BT Studio",
+    "material": "Resin",
+    "size": 30,
+    "weight": 2.87,
+    "price": 205.4,
+    "image": "https://i.ibb.co/rsWcdcc/fat-boo-dog.webp"
+  }
 }
-````
+```
 
 # Technologies
 
