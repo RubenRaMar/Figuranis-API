@@ -10,7 +10,7 @@ import {
   statusCodeList,
 } from "../../utils/responseData/responseData.js";
 
-const loginUser = async (
+export const loginUser = async (
   req: UserCredentialsRequest,
   res: Response,
   next: NextFunction
@@ -36,7 +36,7 @@ const loginUser = async (
     };
 
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET!, {
-      expiresIn: "30d",
+      expiresIn: "300d",
     });
 
     res.status(statusCodeList.ok).json({ token });
@@ -45,4 +45,30 @@ const loginUser = async (
   }
 };
 
-export default loginUser;
+export const registerUser = async (
+  req: UserCredentialsRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { username, password } = req.body;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const regiteredUser = await User.create({
+      username,
+      password: hashedPassword,
+    });
+
+    if (!regiteredUser) {
+      throw new CustomError(
+        statusCodeList.badRequest,
+        privateMessageList.registerError
+      );
+    }
+
+    res.status(statusCodeList.add).json({ user: username });
+  } catch (error) {
+    next(error);
+  }
+};
