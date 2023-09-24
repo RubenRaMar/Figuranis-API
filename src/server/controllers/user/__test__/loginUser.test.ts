@@ -1,12 +1,12 @@
 import { Types } from "mongoose";
-import { type UserCredentialsRequest } from "./types";
+import { type UserCredentialsRequest } from "../types";
 import { type NextFunction, type Response } from "express";
-import User from "../../../database/models/User";
+import User from "../../../../database/models/User";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import loginUser from "./userController";
-import CustomError from "../../Classes/CustomError/CustomError";
-import { statusCodeList } from "../../utils/responseData/responseData";
+import { loginUser } from "../userController";
+import CustomError from "../../../Classes/CustomError/CustomError";
+import { statusCodeList } from "../../../utils/responseData/responseData";
 
 describe("Given a loginUser middleware controller", () => {
   const userCredentialsMock = {
