@@ -11,6 +11,7 @@ export interface MessageList {
   ok: OkStructure;
   wrongCredentials: string;
   endpointNotFound: string;
+  registerError: string;
   generalError: string;
   badRequest: string;
   delete: string;
