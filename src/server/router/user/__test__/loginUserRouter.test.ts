@@ -1,31 +1,22 @@
-import "../../../loadEnvironments.js";
+import "../../../../loadEnvironments.js";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import request from "supertest";
-import User from "../../../database/models/User";
-import connectedDatabase from "../../database/connectedDatabase";
+import User from "../../../../database/models/User.js";
+import connectedDatabase from "../../../database/connectedDatabase.js";
 import mongoose from "mongoose";
-import app from "../../app";
-import pathList from "../../utils/path/path";
+import app from "../../../app.js";
+import pathList from "../../../utils/path/path.js";
 import {
   privateMessageList,
   statusCodeList,
-} from "../../utils/responseData/responseData";
+} from "../../../utils/responseData/responseData.js";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import {
   userCredentialsMock,
   userCredientialsHashMock,
   userErrorCredientialsMock,
-} from "../../../mocks/user/userMoks.js";
-
-interface CustomValidResponse {
-  body: { token: string };
-  statusCode: number;
-}
-
-interface CustomErrorResponse {
-  body: { message: string };
-  statusCode: number;
-}
+} from "../../../../mocks/user/userMoks.js";
+import { type CustomErrorResponse, type CustomValidResponse } from "./types.js";
 
 let server: MongoMemoryServer;
 
@@ -121,7 +112,7 @@ describe("Given a post method /user/login endpoint", () => {
   });
 
   describe("When it recieves a credentials with empty password", () => {
-    test("Then it sounld response with a status code 400", async () => {
+    test("Then it should response with a status code 400", async () => {
       const expectedStatusCode = statusCodeList.badRequest;
 
       const response: CustomErrorResponse = await request(app)
