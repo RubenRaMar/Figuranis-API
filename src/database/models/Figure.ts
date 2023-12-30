@@ -37,12 +37,12 @@ const figureSchema = new Schema({
     type: Number,
     required: true,
   },
-  user: {
+  userId: {
     type: Types.ObjectId,
     ref: "User",
     required: true,
   },
-  purchased: {
+  isPurchased: {
     type: Boolean,
     required: true,
   },

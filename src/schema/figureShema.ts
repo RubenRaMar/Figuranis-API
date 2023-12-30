@@ -12,9 +12,9 @@ const figureShema = {
     price: Joi.number().required(),
     size: Joi.number().required(),
     weight: Joi.number().required(),
-    purchased: Joi.boolean().required(),
+    isPurchased: Joi.boolean().required(),
     id: Joi.string(),
-    user: Joi.string(),
+    userId: Joi.string(),
   }),
 };
 

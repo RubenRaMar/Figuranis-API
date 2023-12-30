@@ -12,32 +12,21 @@ export interface FigureData {
   title: string;
   character: string;
   franchise: string;
-  purchased: boolean;
+  isPurchased: boolean;
   manufacturer: string;
   material: string;
   size: number;
   weight: number;
   price: number;
   image: string;
-  user: Types.ObjectId;
+  userId: Types.ObjectId;
 }
 
-export interface RequestFigureData {
-  title: string;
-  character: string;
-  franchise: string;
-  purchased: boolean;
-  manufacturer: string;
-  material: string;
-  size: number;
-  weight: number;
-  price: number;
-  image: string;
-}
+export type RequestFigureData = Omit<FigureData, "userId">;
 
 export interface RequestUpdateFigureStructure extends RequestFigureData {
   id: string;
-  user: string;
+  userId: string;
 }
 
 export interface FigureIdData extends FigureData {

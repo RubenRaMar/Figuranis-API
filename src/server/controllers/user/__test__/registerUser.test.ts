@@ -66,7 +66,7 @@ describe("Given a registerUser controller", () => {
         privateMessageList.registerError
       );
 
-      User.create = jest.fn().mockRejectedValue(expectedError);
+      User.create = jest.fn().mockReturnValue(undefined);
 
       await registerUser(
         req as UserCredentialsRequest,
