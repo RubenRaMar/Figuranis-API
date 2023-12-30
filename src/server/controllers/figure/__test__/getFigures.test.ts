@@ -14,10 +14,10 @@ beforeEach(() => {
 
 describe("Given a getFigures middleware", () => {
   const userId = "1a2b3c4d5e6f7a8b9c0d1e2f";
-  const query = {
-    skip: "1",
+  const query: CustomRequest["query"] = {
+    page: "1",
     limit: "10",
-    filter: "true",
+    purchased: "true",
   };
 
   const req: CustomRequestBody = {
@@ -33,7 +33,7 @@ describe("Given a getFigures middleware", () => {
   const next = jest.fn();
 
   const figuresWithUserId = figuresMock.filter(
-    (figure) => figure.user.toString() === userId
+    (figure) => figure.userId.toString() === userId
   );
 
   describe("When it invoked with a user id", () => {

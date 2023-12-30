@@ -7,6 +7,7 @@ import {
   privateMessageList,
 } from "../../utils/responseData/responseData.js";
 import CustomError from "../../Classes/CustomError/CustomError.js";
+import { type RequestUpdateFigureStructure } from "../../../types.js";
 
 export const getFigures = async (
   req: CustomRequest,
@@ -15,30 +16,40 @@ export const getFigures = async (
 ) => {
   const {
     userId,
-    query: { limit, skip, filter },
+    query: { limit, page, purchased },
   } = req;
 
-  const newLimit = Number(limit);
-  const newSkip = Number(skip);
+  const defaultLimit = 12;
+  const defaultpage = 0;
 
-  let figureQuery = {};
+  const newLimit = limit ? +limit : defaultLimit;
+  const newSkip = page ? +page * newLimit : defaultpage;
+  const isPurchased = purchased === "true";
+
+  type FigureQueryOptions = {
+    [key in keyof RequestUpdateFigureStructure]?: RequestUpdateFigureStructure[key];
+  };
+
+  let figureQueryOptions: FigureQueryOptions = {};
 
   if (userId) {
-    figureQuery = { user: userId };
+    figureQueryOptions = { ...figureQueryOptions, userId };
   }
 
-  if (filter === "true") {
-    figureQuery = { ...figureQuery, purchased: "false" };
+  if (purchased) {
+    figureQueryOptions = { ...figureQueryOptions, isPurchased };
   }
 
   try {
-    const figures = await Figure.find(figureQuery)
+    const figures = await Figure.find(figureQueryOptions)
       .sort({ _id: -1 })
       .skip(newSkip)
       .limit(newLimit)
       .exec();
 
-    const length = await Figure.where(figureQuery).countDocuments().exec();
+    const length = await Figure.where(figureQueryOptions)
+      .countDocuments()
+      .exec();
 
     res.status(statusCodeList.ok).json({ figures, length });
   } catch (error: unknown) {
@@ -102,7 +113,7 @@ export const addFigure = async (
 
     const addedFigure = await Figure.create({
       ...body,
-      user: new Types.ObjectId(userId),
+      userId: new Types.ObjectId(userId),
     });
 
     if (!addedFigure) {
@@ -128,7 +139,7 @@ export const updateFigure = async (
 
     const updatedFigure = await Figure.findByIdAndUpdate(body.id, {
       ...body,
-      user: new Types.ObjectId(userId),
+      userId: new Types.ObjectId(userId),
       _id: new Types.ObjectId(body.id),
     }).exec();
 

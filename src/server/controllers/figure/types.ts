@@ -10,9 +10,9 @@ export interface CustomRequest extends Request {
     figureId: string;
   };
   query: {
-    skip: string;
-    limit: string;
-    filter: string;
+    page?: string;
+    limit?: string;
+    purchased?: string;
   };
   body: RequestFigureData;
 }

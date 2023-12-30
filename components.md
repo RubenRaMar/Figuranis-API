@@ -10,7 +10,7 @@
     - title: string;
     - character: string;
     - franchise: string;
-    - purchased: boolean;
+    - isPurchased: boolean;
     - manufacturer: string;
     - material: string;
     - size: number;
